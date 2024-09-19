@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap"
+      rel="stylesheet"
+    />
+    <title>CP - Thiago</title>
+    <style>
+      body {
+        font-family: "Poppins", sans-serif;
+        margin: 0;
+        padding: 20px;
+        background-color: #fdfdfd;
+      }
+      h1,
+      h2 {
+        text-align: center;
+      }
+      h1 {
+        font-size: 2.6em;
+      }
+      h2 {
+        font-size: 1.4em;
+        font-style: italic;
+      }
+      article {
+        font-size: 1.1em;
+      }
+      .simbolos {
+        display: flex;
+        justify-content: center;
+        gap: 20px; /* Espaço entre os ícones */
+        margin: 2rem;
+      }
+      .sol {
+        background-color: #f59e0b; /* Cor de fundo dos ícones */
+      }
+      .vento {
+        background-color: #4f46e5; /* Cor de fundo dos ícones */
+      }
+      .neve {
+        background-color: #2563eb; /* Cor de fundo dos ícones */
+      }
+      .material-symbols-outlined {
+        font-size: 36px; /* Tamanho do ícone */
+        color: white; /* Cor dos ícones */
+        border-radius: 50%; /* Fundo circular */
+        padding: 15px; /* Ajuste o tamanho do círculo */
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      .container {
+        width: 80%;
+        margin: auto;
+      }
+      .tables-container,
+      .charts-container {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 20px;
+      }
+      .tables-container > div {
+        width: 48%; /* As tabelas ocupam 48% da largura cada, mantendo o layout flexível */
+      }
+      table {
+        width: 100%; /* Ajusta as tabelas para ocuparem toda a largura do contêiner */
+        border-collapse: collapse;
+        margin: 0.5rem;
+      }
+      table,
+      th,
+      td {
+        border: 1px solid black;
+      }
+      th,
+      td {
+        padding: 10px;
+        text-align: left;
+      }
+      th {
+        font-size: 13.6px;
+        background-color: #f4f4f4;
+      }
+      canvas {
+        display: block;
+      }
+      .chart-container {
+        width: 48%; /* As tabelas ocupam 48% da largura */
+      }
+      .checkbox-container {
+        margin-bottom: 10px;
+        text-align: left;
+      }
+      img {
+        width: 100px;
+        height: 100px;
+        margin-right: 10px;
+        object-fit: contain;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <!-- Título e subtítulo -->
+      <h1>O Impacto das Mudanças Climáticas</h1>
+      <h2>Como o aquecimento global está afetando nosso planeta</h2>
+
+      <!-- Texto introdutório -->
+      <article>
+        As mudanças climáticas têm causado impactos significativos no meio
+        ambiente e na sociedade, incluindo o aumento das temperaturas globais,
+        elevação do nível do mar e fenômenos climáticos extremos, como ondas de
+        calor, secas e inundações. Esses eventos afetam diretamente a vida
+        humana, a biodiversidade e as economias globais, ameaçando comunidades
+        vulneráveis e ecossistemas inteiros.
+      </article>
+      <br />
+      <article>
+        Além dos impactos ambientais, elas também afetam setores econômicos como
+        agricultura e energia, exigindo adaptações custosas. Para mitigar esses
+        efeitos, é crucial que governos, empresas e indivíduos adotem práticas
+        sustentáveis e reduzam as emissões de gases de efeito estufa. Somente
+        com ações globais coordenadas será possível conter as consequências mais
+        graves e garantir um futuro sustentável para as próximas gerações.
+      </article>
+
+      <!-- Símbolos -->
+      <div class="simbolos">
+        <span class="material-symbols-outlined sol"> sunny </span>
+        <span class="material-symbols-outlined vento"> air </span>
+        <span class="material-symbols-outlined neve"> ac_unit </span>
+      </div>
+
+      <!-- Flex container para as tabelas lado a lado -->
+      <div class="tables-container">
+        <div>
+          <!-- Checkbox para selecionar colunas no gráfico de clima -->
+          <div class="checkbox-container">
+            <label
+              ><input type="checkbox" id="temperatureCheckbox" checked />
+              Temperatura Média</label
+            >
+            <label
+              ><input type="checkbox" id="seaLevelCheckbox" checked /> Elevação
+              do Nível do Mar</label
+            >
+            <label
+              ><input type="checkbox" id="extremeEventsCheckbox" checked />
+              Eventos Climáticos Extremos</label
+            >
+          </div>
+
+          <!-- Primeira Tabela -->
+          <table>
+            <thead>
+              <tr>
+                <th>Ano</th>
+                <th>Temperatura Média (°C)</th>
+                <th>Elevação do Nível do Mar (mm)</th>
+                <th>Eventos Climáticos Extremos</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>2000</td>
+                <td>14.3</td>
+                <td>5.6</td>
+                <td>125</td>
+              </tr>
+              <tr>
+                <td>2005</td>
+                <td>14.5</td>
+                <td>7.1</td>
+                <td>150</td>
+              </tr>
+              <tr>
+                <td>2010</td>
+                <td>14.6</td>
+                <td>8.3</td>
+                <td>175</td>
+              </tr>
+              <tr>
+                <td>2020</td>
+                <td>14.9</td>
+                <td>10.1</td>
+                <td>200</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div>
+          <!-- Checkbox para selecionar colunas no gráfico de desmatamento -->
+          <div class="checkbox-container">
+            <label
+              ><input type="checkbox" id="deforestationCheckbox" checked />
+              Desmatamento</label
+            >
+            <label
+              ><input type="checkbox" id="co2Checkbox" checked /> Emissões de
+              CO₂</label
+            >
+            <label
+              ><input type="checkbox" id="rainfallCheckbox" checked /> Chuvas
+              Intensas</label
+            >
+          </div>
+
+          <!-- Segunda Tabela -->
+          <table>
+            <thead>
+              <tr>
+                <th>Ano</th>
+                <th>Desmatamento (mil km²)</th>
+                <th>Emissões de CO₂ (Gt)</th>
+                <th>Chuvas Intensas</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>2000</td>
+                <td>18.3</td>
+                <td>24.5</td>
+                <td>85</td>
+              </tr>
+              <tr>
+                <td>2005</td>
+                <td>19.0</td>
+                <td>26.2</td>
+                <td>95</td>
+              </tr>
+              <tr>
+                <td>2010</td>
+                <td>18.7</td>
+                <td>27.8</td>
+                <td>100</td>
+              </tr>
+              <tr>
+                <td>2020</td>
+                <td>17.9</td>
+                <td>30.4</td>
+                <td>110</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- Flex container para os gráficos lado a lado -->
+      <div class="charts-container">
+        <div class="chart-container">
+          <canvas id="climate-chart" width="300" height="300"></canvas>
+        </div>
+        <div class="chart-container">
+          <canvas id="deforestation-chart" width="300" height="300"></canvas>
+        </div>
+      </div>
+
+      <!-- Referência e link -->
+      <p>
+        Fonte:
+        <a href="https://climate.nasa.gov/" target="_blank"
+          >NASA - Mudanças Climáticas</a
+        >
+      </p>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+      // Dados do gráfico de clima
+      const climateData = {
+        labels: ["2000", "2005", "2010", "2020"],
+        datasets: [
+          {
+            label: "Temperatura Média (°C)",
+            data: [14.3, 14.5, 14.6, 14.9],
+            backgroundColor: "rgba(220, 38, 38, 0.2)",
+            borderColor: "rgba(220, 38, 38, 1)",
+            borderWidth: 1,
+          },
+          {
+            label: "Elevação do Nível do Mar (mm)",
+            data: [5.6, 7.1, 8.3, 10.1],
+            backgroundColor: "rgba(37, 99, 235, 0.2)",
+            borderColor: "rgba(37, 99, 235, 1)",
+            borderWidth: 1,
+          },
+          {
+            label: "Eventos Climáticos Extremos",
+            data: [125, 150, 175, 200],
+            backgroundColor: "rgba(109, 40, 217, 0.2)",
+            borderColor: "rgba(109, 40, 217, 1)",
+            borderWidth: 1,
+          },
+        ],
+      };
+
+      // Dados do gráfico de desmatamento
+      const deforestationData = {
+        labels: ["2000", "2005", "2010", "2020"],
+        datasets: [
+          {
+            label: "Desmatamento (mil km²)",
+            data: [18.3, 19.0, 18.7, 17.9],
+            backgroundColor: "rgba(22, 163, 74, 0.2)",
+            borderColor: "rgba(22, 163, 74, 1)",
+            borderWidth: 1,
+          },
+          {
+            label: "Emissões de CO₂ (Gt)",
+            data: [24.5, 26.2, 27.8, 30.4],
+            backgroundColor: "rgba(249, 115, 22, 0.2)",
+            borderColor: "rgba(249, 115, 22, 1)",
+            borderWidth: 1,
+          },
+          {
+            label: "Chuvas Intensas",
+            data: [85, 95, 100, 110],
+            backgroundColor: "rgba(23, 37, 84, 0.2)",
+            borderColor: "rgba(23, 37, 84, 1)",
+            borderWidth: 1,
+          },
+        ],
+      };
+
+      // Gráfico de clima
+      const ctxClimate = document
+        .getElementById("climate-chart")
+        .getContext("2d");
+      const climateChart = new Chart(ctxClimate, {
+        type: "bar",
+        data: climateData,
+        options: {
+          scales: {
+            y: {
+              beginAtZero: true,
+            },
+          },
+        },
+      });
+
+      // Gráfico de desmatamento
+      const ctxDeforestation = document
+        .getElementById("deforestation-chart")
+        .getContext("2d");
+      const deforestationChart = new Chart(ctxDeforestation, {
+        type: "bar",
+        data: deforestationData,
+        options: {
+          scales: {
+            y: {
+              beginAtZero: true,
+            },
+          },
+        },
+      });
+
+      // Função para atualizar os gráficos de clima
+      function updateClimateChart() {
+        climateChart.data.datasets[0].hidden = !document.getElementById(
+          "temperatureCheckbox"
+        ).checked;
+        climateChart.data.datasets[1].hidden =
+          !document.getElementById("seaLevelCheckbox").checked;
+        climateChart.data.datasets[2].hidden = !document.getElementById(
+          "extremeEventsCheckbox"
+        ).checked;
+        climateChart.update();
+      }
+
+      // Função para atualizar os gráficos de desmatamento
+      function updateDeforestationChart() {
+        deforestationChart.data.datasets[0].hidden = !document.getElementById(
+          "deforestationCheckbox"
+        ).checked;
+        deforestationChart.data.datasets[1].hidden =
+          !document.getElementById("co2Checkbox").checked;
+        deforestationChart.data.datasets[2].hidden =
+          !document.getElementById("rainfallCheckbox").checked;
+        deforestationChart.update();
+      }
+
+      // Adiciona event listeners para as caixas de seleção do gráfico de clima
+      document
+        .getElementById("temperatureCheckbox")
+        .addEventListener("change", updateClimateChart);
+      document
+        .getElementById("seaLevelCheckbox")
+        .addEventListener("change", updateClimateChart);
+      document
+        .getElementById("extremeEventsCheckbox")
+        .addEventListener("change", updateClimateChart);
+
+      // Adiciona event listeners para as caixas de seleção do gráfico de desmatamento
+      document
+        .getElementById("deforestationCheckbox")
+        .addEventListener("change", updateDeforestationChart);
+      document
+        .getElementById("co2Checkbox")
+        .addEventListener("change", updateDeforestationChart);
+      document
+        .getElementById("rainfallCheckbox")
+        .addEventListener("change", updateDeforestationChart);
+    </script>
+  </body>
+</html>
