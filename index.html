@@ -64,7 +64,7 @@
       .imagens img {
         height: 400px;
         width: 650px;
-        object-fit: cover; /* ou 'contain' dependendo do efeito desejado */
+        object-fit: cover;
         box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
       }
       p {
@@ -296,24 +296,24 @@
     <script>
       // Dados do gráfico de clima
       const climateData = {
-        labels: ["2000", "2005", "2010", "2020"],
+        labels: ["2000", "2005", "2010", "2020"], // Anos para o eixo x
         datasets: [
           {
-            label: "Temperatura Média (°C)",
-            data: [14.3, 14.5, 14.6, 14.9],
-            backgroundColor: "rgba(220, 38, 38, 0.2)",
-            borderColor: "rgba(220, 38, 38, 1)",
-            borderWidth: 1,
+            label: "Temperatura Média (°C)", // Nome da série de dados
+            data: [14.3, 14.5, 14.6, 14.9], // Dados correspondentes a cada ano
+            backgroundColor: "rgba(220, 38, 38, 0.2)", // Cor de fundo da barra
+            borderColor: "rgba(220, 38, 38, 1)", // Cor da borda da barra
+            borderWidth: 1, // Largura da borda
           },
           {
-            label: "Elevação do Nível do Mar (mm)",
+            label: "Elevação do Nível do Mar (mm)", // Outra série de dados
             data: [5.6, 7.1, 8.3, 10.1],
             backgroundColor: "rgba(37, 99, 235, 0.2)",
             borderColor: "rgba(37, 99, 235, 1)",
             borderWidth: 1,
           },
           {
-            label: "Eventos Climáticos Extremos",
+            label: "Eventos Climáticos Extremos", // Terceira série de dados
             data: [125, 150, 175, 200],
             backgroundColor: "rgba(109, 40, 217, 0.2)",
             borderColor: "rgba(109, 40, 217, 1)",
@@ -327,21 +327,21 @@
         labels: ["2000", "2005", "2010", "2020"],
         datasets: [
           {
-            label: "Desmatamento (mil km²)",
+            label: "Desmatamento (mil km²)", // Série de dados para desmatamento
             data: [18.3, 19.0, 18.7, 17.9],
             backgroundColor: "rgba(22, 163, 74, 0.2)",
             borderColor: "rgba(22, 163, 74, 1)",
             borderWidth: 1,
           },
           {
-            label: "Emissões de CO₂ (Gt)",
+            label: "Emissões de CO₂ (Gt)", // Série de dados para emissões de CO₂
             data: [24.5, 26.2, 27.8, 30.4],
             backgroundColor: "rgba(249, 115, 22, 0.2)",
             borderColor: "rgba(249, 115, 22, 1)",
             borderWidth: 1,
           },
           {
-            label: "Chuvas Intensas",
+            label: "Chuvas Intensas", // Série de dados para chuvas intensas
             data: [85, 95, 100, 110],
             backgroundColor: "rgba(23, 37, 84, 0.2)",
             borderColor: "rgba(23, 37, 84, 1)",
@@ -350,40 +350,43 @@
         ],
       };
 
-      // Gráfico de clima
+      // Criação do gráfico de clima
       const ctxClimate = document
-        .getElementById("climate-chart")
-        .getContext("2d");
+        .getElementById("climate-chart") // Seleciona o canvas onde o gráfico será renderizado
+        .getContext("2d"); // Obtém o contexto 2D do canvas
+
       const climateChart = new Chart(ctxClimate, {
-        type: "bar",
-        data: climateData,
+        type: "bar", // Tipo de gráfico (barras)
+        data: climateData, // Dados a serem usados
         options: {
           scales: {
             y: {
-              beginAtZero: true,
+              beginAtZero: true, // Inicia o eixo y em 0
             },
           },
         },
       });
 
-      // Gráfico de desmatamento
+      // Criação do gráfico de desmatamento
       const ctxDeforestation = document
-        .getElementById("deforestation-chart")
-        .getContext("2d");
+        .getElementById("deforestation-chart") // Seleciona o canvas para o gráfico de desmatamento
+        .getContext("2d"); // Obtém o contexto 2D
+
       const deforestationChart = new Chart(ctxDeforestation, {
-        type: "bar",
-        data: deforestationData,
+        type: "bar", // Tipo de gráfico (barras)
+        data: deforestationData, // Dados a serem usados
         options: {
           scales: {
             y: {
-              beginAtZero: true,
+              beginAtZero: true, // Inicia o eixo y em 0
             },
           },
         },
       });
 
-      // Função para atualizar os gráficos de clima
+      // Função para atualizar os gráficos de clima com base nas seleções do usuário
       function updateClimateChart() {
+        // Atualiza a visibilidade das séries de dados com base nas caixas de seleção
         climateChart.data.datasets[0].hidden = !document.getElementById(
           "temperatureCheckbox"
         ).checked;
@@ -392,11 +395,12 @@
         climateChart.data.datasets[2].hidden = !document.getElementById(
           "extremeEventsCheckbox"
         ).checked;
-        climateChart.update();
+        climateChart.update(); // Atualiza o gráfico para refletir as mudanças
       }
 
       // Função para atualizar os gráficos de desmatamento
       function updateDeforestationChart() {
+        // Atualiza a visibilidade das séries de dados com base nas caixas de seleção
         deforestationChart.data.datasets[0].hidden = !document.getElementById(
           "deforestationCheckbox"
         ).checked;
@@ -404,7 +408,7 @@
           !document.getElementById("co2Checkbox").checked;
         deforestationChart.data.datasets[2].hidden =
           !document.getElementById("rainfallCheckbox").checked;
-        deforestationChart.update();
+        deforestationChart.update(); // Atualiza o gráfico
       }
 
       // Adiciona event listeners para as caixas de seleção do gráfico de clima
