@@ -57,6 +57,19 @@
         align-items: center;
         justify-content: center;
       }
+      .imagens {
+        display: flex;
+        justify-content: space-around;
+      }
+      .imagens img {
+        height: 400px;
+        width: 650px;
+        object-fit: cover; /* ou 'contain' dependendo do efeito desejado */
+        box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+      }
+      p {
+        margin: 2rem 2.8rem;
+      }
       .container {
         width: 80%;
         margin: auto;
@@ -138,6 +151,20 @@
         <span class="material-symbols-outlined vento"> air </span>
         <span class="material-symbols-outlined neve"> ac_unit </span>
       </div>
+
+      <!-- Imagens -->
+      <div class="imagens">
+        <img src="img/poluindo.jpg" alt="Indústria poluindo" />
+        <img src="img/derretendo.jpg" alt="Galeira derretendo" />
+      </div>
+
+      <!-- Referência e link -->
+      <p>
+        Fonte:
+        <a href="https://climate.nasa.gov/" target="_blank"
+          >NASA - Mudanças Climáticas</a
+        >
+      </p>
 
       <!-- Flex container para as tabelas lado a lado -->
       <div class="tables-container">
@@ -263,14 +290,6 @@
           <canvas id="deforestation-chart" width="300" height="300"></canvas>
         </div>
       </div>
-
-      <!-- Referência e link -->
-      <p>
-        Fonte:
-        <a href="https://climate.nasa.gov/" target="_blank"
-          >NASA - Mudanças Climáticas</a
-        >
-      </p>
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
